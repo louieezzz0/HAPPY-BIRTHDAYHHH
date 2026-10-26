@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050610">
+<title>For Jenn ♡</title>
+<style>
+:root{--ink:#080813;--lav:#d9a3ff;--pink:#ffb7dc;--paper:#fff5ec;--text:#483547}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:#050610;color:#fff;font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button{font:inherit}
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 70%,#171637 0%,#080817 53%,#02030a 100%)}
+#sky:before,#sky:after{content:"";position:absolute;inset:-20%;background-image:radial-gradient(1px 1px at 10% 20%,#fff 98%,transparent),radial-gradient(1px 1px at 70% 35%,#ead7ff 98%,transparent),radial-gradient(2px 2px at 35% 60%,#fff 98%,transparent),radial-gradient(1px 1px at 85% 80%,#d7b5ff 98%,transparent),radial-gradient(1px 1px at 50% 12%,#fff 98%,transparent);background-size:190px 170px;opacity:.7;animation:stars 7s ease-in-out infinite alternate}
+#sky:after{transform:translate(35px,45px) scale(1.15);opacity:.3;animation-delay:-3s}
+@keyframes stars{to{opacity:.25;transform:translateY(-10px)}}
+#petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:3}
+.falling{position:absolute;top:-35px;color:#f5b9e1;font-size:15px;opacity:.75;animation:fall linear forwards;filter:drop-shadow(0 0 5px #b86dff)}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(540deg);opacity:0}}
+main{position:relative;z-index:1;min-height:100vh}
+.screen{position:absolute;inset:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 18px;opacity:0;visibility:hidden;transform:translateY(18px) scale(.985);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),visibility .8s}
+.screen.active{position:relative;opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.screen.leaving{opacity:0;transform:translateY(-12px) scale(1.015)}
+.kicker{font:11px/1.5 Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#e8caff;text-align:center}
+h1{font-size:clamp(2.4rem,9vw,4.8rem);font-weight:normal;font-style:italic;line-height:1.05;text-align:center;color:#f0caff;text-shadow:0 0 22px #a64fff;margin:20px 0}
+h2{font-weight:normal}
+.small{color:#d8c8eb;text-align:center;line-height:1.7;font-size:14px}
+.glow-btn{cursor:pointer;color:#f7eaff;border:1px solid #db9cff;border-radius:40px;background:linear-gradient(110deg,#9a4be833,#ff94dc22);padding:13px 23px;letter-spacing:.5px;box-shadow:0 0 18px #a54ce855,inset 0 0 12px #bd7cff12;transition:transform .25s,box-shadow .25s,background .25s}
+.glow-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px #c16dff99;background:#a34bce55}
+.glow-btn:active{transform:scale(.97)}
+.open-copy{max-width:360px;font-size:clamp(1.2rem,4.7vw,1.7rem);font-style:italic;line-height:1.6;text-align:center;color:#f6e5ff}
+.moon{position:absolute;top:12%;right:15%;width:30px;height:30px;border-radius:50%;box-shadow:-8px 2px 0 0 #e7d9ff;opacity:.8}
+.heart-wrap{height:190px;display:grid;place-items:center}
+.heart{font-size:100px;color:#ffb8f0;filter:drop-shadow(0 0 18px #e15dff);animation:beat 1.5s ease-in-out infinite;display:inline-block}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
+.bouquet{width:min(88vw,370px);height:340px;position:relative;margin:10px auto 0}
+.bouquet svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 9px #b86bff30)}
+.bouquet-title{font-style:italic;font-size:clamp(2.1rem,7vw,3.5rem);color:#edc8ff;text-shadow:0 0 16px #b75aff;text-align:center;margin:0}
+.flower-caption{text-align:center;color:#d8c7ed;font-size:13px;letter-spacing:1px}
+.envelope{width:min(80vw,310px);height:190px;position:relative;margin:20px auto 25px;cursor:pointer;filter:drop-shadow(0 0 25px #9b53c955);transition:transform .5s}
+.envelope:hover{transform:translateY(-5px)}
+.env-back{position:absolute;inset:0;background:#d9a8d3;border-radius:5px}
+.env-front{position:absolute;inset:0;background:#f2d7e9;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:5px}
+.env-flap{position:absolute;inset:0;background:#e7bde0;clip-path:polygon(0 0,100% 0,50% 65%);transform-origin:top;transition:transform .65s ease;z-index:2}
+.seal{position:absolute;z-index:3;left:50%;top:53%;transform:translate(-50%,-50%);width:43px;height:43px;border-radius:50%;background:#9c5a9f;border:2px solid #e8c4e5;display:grid;place-items:center;color:#ffe9f8;font-size:22px;box-shadow:0 0 12px #8e438b}
+.envelope.open .env-flap{transform:rotateX(180deg);opacity:.6}
+.envelope.open{transform:translateY(-8px) scale(.97)}
+.envelope-label{text-align:center;font-style:italic;color:#e5c6ff;line-height:1.8}
+.letter-shell{width:min(100%,650px);margin:auto}
+.paper{position:relative;background:linear-gradient(135deg,#fff8ef,#f8e7e7);color:var(--text);border-radius:4px;padding:28px 24px 20px;box-shadow:0 0 35px #b36bff45,0 18px 55px #0008;border:1px solid #e8c5d7;max-height:68vh;overflow:auto}
+.paper:before{content:"";position:absolute;inset:8px;border:1px solid #e7c7d5;pointer-events:none}
+.paper h2{text-align:center;color:#96509b;font-size:clamp(1.35rem,5vw,1.8rem);margin:4px 0 18px;font-style:italic}
+.paper p{position:relative;font:15px/1.75 'Trebuchet MS',Arial,sans-serif;white-space:pre-line;margin:0;min-height:220px}
+.paper .page-count{position:relative;text-align:right;color:#9b6d92;font:12px Arial,sans-serif;margin-top:14px}
+.letter-controls{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:18px}
+.nav-btn{border:1px solid #d99cde;border-radius:30px;padding:10px 17px;background:#3a1747aa;color:#f8e8ff;cursor:pointer;transition:all .25s}
+.nav-btn:hover{background:#a44dc566;transform:translateY(-2px)}
+.nav-btn:disabled{opacity:.35;cursor:default;transform:none}
+.end-bouquet{font-size:clamp(3rem,15vw,6rem);letter-spacing:4px;filter:drop-shadow(0 0 16px #d57aff);animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px)}}
+.signature{font-size:1.5rem;font-style:italic;color:#f0cbff;text-align:center;line-height:1.7}
+footer{font:11px Arial,sans-serif;color:#b9a9d1;letter-spacing:1px;text-align:center;margin-top:25px}
+@media(max-height:720px){.bouquet{height:280px}.paper{max-height:61vh;padding:22px 20px 16px}.paper p{font-size:14px;min-height:170px}.heart-wrap{height:150px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="sky"></div><div id="petals"></div>
+<main>
+<section class="screen active" id="s0">
+  <div class="moon"></div><div class="kicker">a little something for you</div>
+  <button class="glow-btn" onclick="go(1)">Tap to continue&nbsp; →</button>
+</section>
+<section class="screen" id="s1">
+  <div class="kicker">just for you</div>
+  <div class="heart-wrap"><span class="heart">♡</span></div>
+  <h2 style="font-style:italic;color:#e7c5ff;margin:0 0 8px">You're special</h2>
+  <p class="small">Keep going... ♡</p>
+  <button class="glow-btn" onclick="go(2)">Continue&nbsp; →</button>
+</section>
+<section class="screen" id="s2">
+  <div class="kicker">a bouquet made with love</div>
+  <h1 class="bouquet-title">Flowers For You</h1>
+  <div class="bouquet">
+    <svg viewBox="0 0 360 340" role="img" aria-label="Pink tulips and white lilies tied with a purple ribbon">
+      <defs>
+        <linearGradient id="tulip" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe0f0"/><stop offset=".55" stop-color="#ee8fbd"/><stop offset="1" stop-color="#a74385"/></linearGradient>
+        <linearGradient id="lily" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf7"/><stop offset=".65" stop-color="#f6d9ed"/><stop offset="1" stop-color="#c78ecb"/></linearGradient>
+        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a4d5a2"/><stop offset="1" stop-color="#235d4a"/></linearGradient>
+        <linearGradient id="wrap" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9c6ff" stop-opacity=".95"/><stop offset="1" stop-color="#8e56b8" stop-opacity=".95"/></linearGradient>
+      </defs>
+      <!-- stems and leaves -->
+      <g stroke="#4d8b62" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M180 292 Q150 200 85 94"/><path d="M180 292 Q165 190 139 76"/><path d="M180 292 Q182 180 183 64"/><path d="M180 292 Q205 185 229 91"/><path d="M180 292 Q230 220 278 132"/>
+      </g>
+      <g fill="url(#leaf)">
+        <path d="M167 252 Q112 228 117 177 Q159 193 167 252"/><path d="M184 270 Q224 224 252 227 Q232 269 184 270"/>
+        <path d="M155 218 Q105 196 99 158 Q142 171 155 218"/><path d="M201 234 Q229 192 262 194 Q245 231 201 234"/>
+        <path d="M173 190 Q133 157 143 123 Q175 145 173 190"/><path d="M205 204 Q242 165 267 171 Q248 207 205 204"/>
+        <path d="M177 275 Q142 256 142 226 Q171 239 177 275"/>
+      </g>
+      <!-- tulip buds -->
+      <g stroke="#b45d91" stroke-width="1.5">
+        <path d="M65 102 Q52 75 69 52 Q72 67 83 45 Q99 72 87 102 Q76 112 65 102Z" fill="url(#tulip)"/>
+        <path d="M119 83 Q104 57 123 34 Q125 49 138 29 Q154 57 141 83 Q131 95 119 83Z" fill="url(#tulip)"/>
+        <path d="M163 70 Q149 45 168 20 Q170 37 183 14 Q201 43 187 70 Q176 82 163 70Z" fill="url(#tulip)"/>
+        <path d="M211 99 Q197 74 215 52 Q217 66 230 46 Q247 72 233 99 Q222 110 211 99Z" fill="url(#tulip)"/>
+        <path d="M264 139 Q251 116 267 94 Q270 108 282 89 Q299 115 285 139 Q275 150 264 139Z" fill="url(#tulip)"/>
+      </g>
+      <!-- lilies with six petals each -->
+      <g transform="translate(229 143)">
+        <g fill="url(#lily)" stroke="#dfb7d8" stroke-width="1.2">
+          <ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(60)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(180)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(240)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(300)"/>
+        </g><circle r="8" fill="#e8b85e"/><g stroke="#c58b42" stroke-width="1.5"><path d="M0 0L-16 -14 M0 0L15 -16 M0 0L1 -20 M0 0L17 6 M0 0L-16 7"/></g>
+      </g>
+      <g transform="translate(108 139) scale(.78)">
+        <g fill="url(#lily)" stroke="#dfb7d8" stroke-width="1.2">
+          <ellipse cx="0" cy="-24" rx="13" ry="31"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(60)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(120)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(180)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(240)"/><ellipse cx="0" cy="-24" rx="13" ry="31" transform="rotate(300)"/>
+        </g><circle r="8" fill="#e8b85e"/><g stroke="#c58b42" stroke-width="1.5"><path d="M0 0L-16 -14 M0 0L15 -16 M0 0L1 -20 M0 0L17 6 M0 0L-16 7"/></g>
+      </g>
+      <!-- tiny filler flowers -->
+      <g fill="#fff0fc"><circle cx="92" cy="176" r="3"/><circle cx="99" cy="182" r="3"/><circle cx="88" cy="185" r="3"/><circle cx="92" cy="181" r="2" fill="#e7c26c"/><circle cx="258" cy="184" r="3"/><circle cx="266" cy="188" r="3"/><circle cx="254" cy="193" r="3"/><circle cx="260" cy="189" r="2" fill="#e7c26c"/></g>
+      <!-- bouquet wrap -->
+      <path d="M77 183 Q180 213 283 181 L236 310 Q180 329 124 310Z" fill="url(#wrap)" stroke="#e4baff" stroke-width="1.5"/>
+      <path d="M77 183 Q180 231 283 181 M124 310L180 242L236 310" fill="none" stroke="#f7e7ff" stroke-opacity=".65" stroke-width="2"/>
+      <path d="M180 245 C151 221 137 245 159 260 L180 274 L201 260 C223 245 209 221 180 245Z" fill="#6d398d" stroke="#d5a7ed" stroke-width="2"/>
+      <path d="M166 263 Q145 293 153 311 Q176 292 180 274 M194 263 Q218 291 208 311 Q185 293 180 274" fill="#8b50a9" stroke="#d5a7ed" stroke-width="2"/>
+    </svg>
+  </div>
+  <p class="flower-caption">tulips & lilies, just for you ♡</p>
+  <button class="glow-btn" onclick="go(3)">Open your letter&nbsp; →</button>
+</section>
+<section class="screen" id="s3">
+  <div class="kicker">a little note for you</div>
+  <div class="envelope" id="envelope" onclick="openEnvelope()" role="button" tabindex="0" aria-label="Open envelope">
+    <div class="env-back"></div><div class="env-flap"></div><div class="env-front"></div><div class="seal">♡</div>
+  </div>
+  <p class="envelope-label">Open when you're ready<br>♡</p>
+  <button class="glow-btn" onclick="openLetter()">Read your letter&nbsp; →</button>
+</section>
+<section class="screen" id="s4">
+  <div class="letter-shell">
+    <div class="paper">
+      <h2 id="pageTitle">Happy Birthday! ♡</h2>
+      <p id="pageText"></p>
+      <div class="page-count" id="pageCount">1 / 6</div>
+    </div>
+    <div class="letter-controls">
+      <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">← Previous</button>
+      <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+    </div>
+  </div>
+</section>
+<section class="screen" id="s5">
+  <div class="kicker">keep shining</div>
+  <h1 style="font-size:clamp(2.2rem,8vw,4rem)">You're doing great</h1>
+  <div class="end-bouquet">🌷🤍🌷</div>
+  <p class="signature">Happy Birthday, Jenn ♡<br><span style="font-size:1rem">I hope this year is kind to you.</span></p>
+  <button class="glow-btn" onclick="go(0)">Read it again ↺</button>
+  <footer>made with care ♡</footer>
+</section>
+</main>
+<script>
+const pages = [
+`HELLLOOOOO, happy happy birthdayy! 🥳🤍
+
+Uhm, ang masasabi ko lang is I'm proud of you. Kung nasaan ka man ngayon, sa mga na-achieve mo, and sa mga maa-achieve mo pa sa susunod. I know lately super busy ka and stressed, kaya ayoko rin namang dumagdag sa'yo HAHAHA.`,
+`Just try to stay positive always and look at the brighter side of every challenge. Lahat naman tayo may pinagdadaanan, napapagod, at syempre may nararamdaman. So what I want to say is, your feelings are valid, and so are everyone else's.
+
+And kung sa tingin mo failure lang ang kalalabasan ng lahat ng efforts mo, that's a big NO. I know you have your own strengths, and I know mas lalakas ka pa with every challenge.`,
+`Kahit hindi ka masyadong open, ramdam ko minsan yung bigat ng dinadala mo and those negative thoughts. Try to open up sometimes; nakakatulong 'yon. Huwag mong ipitin ang sarili mo sa problema. At the end of the day, malalampasan mo rin naman 'yan!
+
+And I'm super duper sure na kung nandito pa si Tita, your mom would be super proud of you sa lahat ng naging outcomes ng mga pinagdaanan mo.`,
+`And si Tito naman, brah, eto ha—guys aren't always that expressive with their feelings, trust me HAHAHA. Pero deep inside, I'm sure super proud and masaya siya, especially sa'yo. Hindi lang proud, SUPER PROUD 'yan!
+
+Kaya sa lahat ng ginagawa mo, normal lang mapagod at normal lang magpahinga. Kahit pa sabihin nilang mas pagod sila sa'yo, nahhhhh 😭 ikaw lang ang nakakaalam sa sarili mo kung gaano ka kapagod. So huwag mo nang isipin yung ganung atake.`,
+`It's normal to take a break, and normal din to take things one step at a time. Kahit sabihin nating maliit lang yung nagawa mo, at least may nagawa ka kaysa sa wala, right?
+
+Always be proud of yourself. Don't doubt yourself. Walk with confidence and be happy, kahit mahirap yung pinagdadaanan mo! God will provide for sure, pero samahan natin ng gawa para makuha natin yung mga pangarap natin. 😁
+
+Gusto ko ring i-share sa'yo yung life verse ko. Sabi sa Deuteronomy 31:6:`,
+`“Be strong and courageous. Do not be afraid or terrified because of them, for the Lord your God goes with you; He will never leave you nor forsake you.”
+
+'Yun ang isa sa mga verses na nakakatulong sa akin, lalo na kapag down na down na ang ekalal na 'to HAHAHA. And I know malakas ka rin, soooo spend your day happy!
+
+AND GOOD LUCK ON YOUR EXAM!! I-TAOB MO YUNG TABLE MO KAPAG WALA KA NANG MASAGOT HAHAHAHAHA—KIDDING 😭😭
+
+Anyways, good luck and happy birthday again!! 🤍🌷`
+];
+let current=0, petalsStarted=false;
+function go(n){
+ const old=document.querySelector('.screen.active');
+ if(old){old.classList.add('leaving');setTimeout(()=>old.classList.remove('leaving','active'),450)}
+ const next=document.getElementById('s'+n);
+ setTimeout(()=>{next.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(n===2&&!petalsStarted){startPetals();petalsStarted=true}},100);
+}
+function startPetals(){
+ const layer=document.getElementById('petals');
+ for(let i=0;i<18;i++){const p=document.createElement('span');p.className='falling';p.textContent=Math.random()>.45?'✿':'♡';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*9)+'s';p.style.animationDelay=(-Math.random()*12)+'s';p.style.setProperty('--drift',(Math.random()*150-75)+'px');p.style.fontSize=(10+Math.random()*12)+'px';layer.appendChild(p)}
+}
+function openEnvelope(){const e=document.getElementById('envelope');e.classList.toggle('open')}
+function openLetter(){current=0;renderPage();go(4)}
+function renderPage(){
+ const p=document.getElementById('pageText');
+ p.style.opacity=0;p.style.transform='translateY(7px)';
+ setTimeout(()=>{p.textContent=pages[current];p.style.transition='opacity .45s ease,transform .45s ease';p.style.opacity=1;p.style.transform='translateY(0)'},180);
+ document.getElementById('pageCount').textContent=(current+1)+' / '+pages.length;
+ document.getElementById('prevBtn').disabled=current===0;
+ document.getElementById('nextBtn').textContent=current===pages.length-1?'Finish ♡':'Next →';
+}
+function changePage(dir){
+ if(current===pages.length-1&&dir===1){go(5);return}
+ current=Math.max(0,Math.min(pages.length-1,current+dir));renderPage();
+}
+document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnvelope()}});
+</script>
+</body>
+</html>
